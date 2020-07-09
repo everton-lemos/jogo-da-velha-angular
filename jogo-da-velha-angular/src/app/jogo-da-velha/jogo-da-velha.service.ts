@@ -19,7 +19,6 @@ export class JogoDaVelhaService {
   private showTabuleiro: boolean;
   private showFinal: boolean;
 
-
   constructor() { }
 
   inicializar(): void {
@@ -55,10 +54,12 @@ export class JogoDaVelhaService {
     return this.jogador;
   }
 
+
   iniciarJogo(): void {
     this.showInicio = false;
     this.showTabuleiro = true;
   }
+
 
   jogar(posX: number, posY: number): void {
     if (this.tabuleiro[posX][posY] !== this.VAZIO ||
@@ -76,7 +77,6 @@ export class JogoDaVelhaService {
       this.cpuJogar();
     }
 
-    // houve vitória
     if (this.vitoria !== false) {
       this.showFinal = true;
     }
@@ -103,7 +103,6 @@ export class JogoDaVelhaService {
       fim = [[0, coluna], [1, coluna], [2, coluna]];
     }
 
-    // valida as diagonais
     if (tabuleiro[0][0] === jogador &&
       tabuleiro[1][1] === jogador &&
       tabuleiro[2][2] === jogador) {
@@ -119,17 +118,10 @@ export class JogoDaVelhaService {
     return fim;
   }
 
-  /**
-   * Lógica para simular jogada do computador em modo aleatório.
-   *
-   * @return void
-   */
   cpuJogar(): void {
-    // verifica jogada de vitória
     let jogada: number[] = this.obterJogada(this.O);
 
     if (jogada.length <= 0) {
-      // tenta jogar para evitar derrota
       jogada = this.obterJogada(this.X);
     }
 
@@ -178,7 +170,6 @@ export class JogoDaVelhaService {
     return this.tabuleiro[posX][posY] === this.O;
   }
 
-
   exibirVitoria(posX: number, posY: number): boolean {
     let exibirVitoria = false;
 
@@ -195,7 +186,6 @@ export class JogoDaVelhaService {
 
     return exibirVitoria;
   }
-
 
   novoJogo(): void {
     this.inicializar();

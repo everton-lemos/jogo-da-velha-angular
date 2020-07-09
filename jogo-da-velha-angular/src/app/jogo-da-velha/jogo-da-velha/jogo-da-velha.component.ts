@@ -1,3 +1,4 @@
+import { JogoDaVelhaService } from './../jogo-da-velha.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JogoDaVelhaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: JogoDaVelhaService) { }
 
   ngOnInit(): void {
+    this.service.inicializar();
   }
+
+  get showInicio(): boolean {
+    return this.service.getShowInicio;
+  }
+
+  get showTabuleiro(): boolean {
+    return this.service.getShowTabuleiro;
+  }
+
+  get showFinal(): boolean {
+    return this.service.getShowFinal;
+  }
+
+  iniciarJogo(): void {
+    this.service.iniciarJogo();
+  }
+
+  jogar(posX: number, posY: number): void {
+    this.service.jogar(posX, posY);
+  }
+
+  exibirX(posX: number, posY: number): void {
+    this.service.exibirX(posX, posY);
+  }
+
+  exibirO(posX: number, posY: number): void {
+    this.service.exibirO(posX, posY);
+  }
+
+  exibirVitoria(posX: number, posY: number): void {
+    this.service.exibirVitoria(posX, posY);
+  }
+
+  // get jogardor(): number {
+  //   return this.service.getJogador();
+  // }
 
 }
